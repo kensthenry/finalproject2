@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :initialize_session
+
   def index
     @products = Product.All
   end
@@ -19,6 +21,17 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def cart
+    @cart = session[:cart]
+        .filter{|id,count| count>0} 
+        .map{|id,count| [Product.find(id),count]} 
+  end
+
+  def checkout
+    session[:cart] = nil 
+    redirect_to products_path
+  end
+
   def update
     @product = Product.find(params[:id])
 
@@ -36,9 +49,19 @@ class ProductsController < ApplicationController
     redirect_to products_path, status: :see_other
   end
 
+  def json
+    @products = Product.all
+    render json: @products, only: [:id, :title, :description, :price]
+  end
+
   private
     def product_params
       params.require(:product).permit(:title, :body)
     end
-end
+
+  def initialize_session
+  empty_cart = Product.all.map{|p| [p.id, 0]}.to_h 
+  session[:cart] ||= empty_cart 
+  @item_count = session[:cart].values.reduce(:+) 
+  end
 end

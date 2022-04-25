@@ -1,5 +1,5 @@
 <%= form_with model: product do |form| %>
-  <div>
+  <div><%# Product Title %>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
     <% product.errors.full_messages_for(:title).each do |message| %>
@@ -7,10 +7,34 @@
     <% end %>
   </div>
 
-  <div>
+  <div><%# Product Description %>
     <%= form.label :body %><br>
     <%= form.text_area :body %><br>
     <% product.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div><%# Product Price %>
+    <%= form.label :price %><br>
+    <%= form.number_area :price %><br>
+    <% product.errors.full_messages_for(:price).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div><%# Product Stock Availability %>
+    <%= form.label :stock %><br>
+    <%= form.number_area :stock %><br>
+    <% product.errors.full_messages_for(:stock).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div><%# Product Image %>
+    <%= form.label :image %><br>
+    <%= form.text_area :image %><br>
+    <% product.errors.full_messages_for(:image).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
