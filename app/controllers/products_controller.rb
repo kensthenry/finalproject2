@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :initialize_session
 
   def index
-    @products = Product.All
+    @products = Product.all
   end
 
   def show
