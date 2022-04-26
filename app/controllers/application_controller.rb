@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
     before_action :initialize_session
     
     def clearsession
-        session[:user] = nil
         session[:cart] = nil
         redirect_to root_path
     end

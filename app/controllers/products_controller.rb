@@ -32,6 +32,20 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def buy
+    @product = Product.find(params[:id])
+    @product.stock = @product.stock=1
+    if @product.stock < 0
+        redirect_to product_path
+    else
+        @product.save
+        curr_q = session[:cart][@product.id.to_s].to_i
+        curr_q += 1
+        session[:cart][@product.id.to_s]=curr_q
+        redirect_to product_path
+    end
+  end
+
   def update
     @product = Product.find(params[:id])
 
