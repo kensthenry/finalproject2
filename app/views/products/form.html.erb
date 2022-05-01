@@ -16,17 +16,17 @@
   </div>
 
   <div><% Product Price %>
-    <%= form.label :price %><br>
-    <%= form.number_area :price %><br>
-    <% product.errors.full_messages_for(:price).each do |message| %>
+    <%= form.label :decimal %><br>
+    <%= form.number_area :decimal %><br>
+    <% product.errors.full_messages_for(:decimal).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
   <div><% Product Availability %>
-    <%= form.label :stock %><br>
-    <%= form.number_area :stock %><br>
-    <% product.errors.full_messages_for(:stock).each do |message| %>
+    <%= form.label :integer %><br>
+    <%= form.number_area :integer %><br>
+    <% product.errors.full_messages_for(:integer).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>

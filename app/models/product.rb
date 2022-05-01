@@ -5,3 +5,5 @@ class Product < ApplicationRecord
         validates :stock, comparison: {greater_than_or_equal_to: 0}
 end
 
+         
+

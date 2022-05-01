@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-          <h1>Our Products! Take a moment to browse.</h1>
+          <h1>Our Products! Take a moment to browse. Don't forget to add things you like to your cart!</h1>
         </div>
     </div>
 
@@ -11,7 +11,7 @@
         <% = link_to product.title, product %>
           <%= product.title %>
             <% if product.image.attached? %>
-              <%= image_tag(product.image, class: "card-img-top", style: "width: 353px; height: 234px; object-fit: cover;") %>
+              <%= image_tag(product.image, class: "card-img-top", style: "width: 275px; height: 275px; object-fit: cover;") %>
             <% end %>
     </li>
 </ul>
