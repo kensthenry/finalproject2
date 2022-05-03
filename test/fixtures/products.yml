@@ -3,9 +3,11 @@
 one:
   title: MyString
   body: MyText
-  price: 1
+  stock: 1
+  price: 9.99
 
 two:
   title: MyString
   body: MyText
-  price: 1
+  stock: 1
+  price: 9.99

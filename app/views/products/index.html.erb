@@ -1,23 +1,22 @@
 <div class="container">
     <div class="row">
         <div class="col">
-          <h1>Our Products! Take a moment to browse. Don't forget to add things you like to your cart!</h1>
+          <h1>Our Products!</h1> 
+          <h2>Take a moment to browse. Don't forget to add things you like to your cart!</h2>
         </div>
     </div>
-
+</div>
 <ul>
-    <li>
-      <% @products.each do |product| %>
-        <% = link_to product.title, product %>
-          <%= product.title %>
-            <% if product.image.attached? %>
-              <%= image_tag(product.image, class: "card-img-top", style: "width: 275px; height: 275px; object-fit: cover;") %>
-            <% end %>
-    </li>
+  <% @products.each do |p| %><li>
+    <%= link_to p.title, p %>
+    <br>
+    <%= image_tag(p.image, {:style => "width: 250px; height: 250px; object-fit: cover;"}) %>
+<br>
+    <div class="col" style="text-align: center">
+      <button class="btn-dark btn-sm" type="button"><%= link_to "Buy", "/products/#{p.id}/buy"%></button>
+    </div>
+  </li><% end %>
 </ul>
 
-<div class="col" style="text-align: right">
-  <button class="btn-dark btn-sm" type="button"><%= link_to "Buy", "/products/#{product.id}/buy"%></button>
-</div>
 
 

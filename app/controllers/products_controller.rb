@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     end
 
     def create
-      @Product = Product.new(product_params)
+      @product = Product.new(product_params)
     end
 
     def edit
@@ -34,15 +34,15 @@ class ProductsController < ApplicationController
 
     def buy
       @product = Product.find(params[:id])
-      @product.stock = @product.stock=1
+      @product.stock = @product.stock-=1
     if @product.stock < 0
-        redirect_to product_path
+        redirect_to listed_path
     else
         @product.save
         curr_q = session[:cart][@product.id.to_s].to_i
         curr_q += 1
         session[:cart][@product.id.to_s]=curr_q
-        redirect_to product_path
+        redirect_to listed_path
     end
     end
 
@@ -77,6 +77,5 @@ class ProductsController < ApplicationController
       empty_cart = Product.all.map{|p| [p.id, 0]}.to_h 
       session[:cart] ||= empty_cart 
       @item_count = session[:cart].values.reduce(:+) 
-   end
-  end
+    end
 end

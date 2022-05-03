@@ -17,16 +17,14 @@ class CommentsController < ApplicationController
             else
               render :edit, status: :unprocessable_entity
             end
-            else
+            
             message = "You've not submitted any comments!"
             redirect_to product_path, notice: message
-          end
+          
         end
 
         private
           def comment_params
             params.require(:comment).permit(:commenter, :body)
           end
-        end
-      
 end

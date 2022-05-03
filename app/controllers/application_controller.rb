@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     
     def clearsession
         session[:cart] = nil
-        redirect_to root_path
+        redirect_to listed_path
     end
     
     private

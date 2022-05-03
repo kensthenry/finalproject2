@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-root "products#index"
 
-get '/products/:id/buy', to: 'products#buy', as: 'Buy'
-get '/cart', to: 'products#cart', as: 'Cart'
-get '/checkout', to: 'products#checkout', as: 'Checkout'
+root "home#index"
+
+get 'products/index', to: 'products#index', as: 'listed'
+get '/products/:id/buy', to: 'products#buy', as: 'buy'
+get '/cart', to: 'products#cart', as: 'cart'
+get '/checkout', to: 'products#checkout', as: 'checkout'
 
 resources :products, path: '/products'
 resources :comments, only: [:show, :new, :update]
