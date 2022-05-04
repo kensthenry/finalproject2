@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       
         def edit
           @comment = Comment.find(params[:id])
-            redirect_to product_path
+            redirect_to listed_path
         end
     
         def update
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
             end
             
             message = "You've not submitted any comments!"
-            redirect_to product_path, notice: message
+            redirect_to listed_path, notice: message
           
         end
 

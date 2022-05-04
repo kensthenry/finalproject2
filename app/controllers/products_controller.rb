@@ -23,25 +23,19 @@ class ProductsController < ApplicationController
 
     def cart
       @cart = session[:cart]
-        .filter{|id,count| count>0} 
-        .map{|id,count| [Product.find(id),count]} 
     end
 
     def checkout
-      session[:cart] = nil 
-      redirect_to products_path
+      session[:cart] = nil
+      redirect_to listed_path
     end
 
     def buy
       @product = Product.find(params[:id])
-      @product.stock = @product.stock-=1
     if @product.stock < 0
         redirect_to listed_path
     else
         @product.save
-        curr_q = session[:cart][@product.id.to_s].to_i
-        curr_q += 1
-        session[:cart][@product.id.to_s]=curr_q
         redirect_to listed_path
     end
     end
@@ -74,8 +68,9 @@ class ProductsController < ApplicationController
     end
 
     def initialize_session
-      empty_cart = Product.all.map{|p| [p.id, 0]}.to_h 
-      session[:cart] ||= empty_cart 
-      @item_count = session[:cart].values.reduce(:+) 
+      if session[:cart].nil? 
+        session[:cart] = [] 
     end
+  end
 end
+

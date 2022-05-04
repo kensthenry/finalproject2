@@ -3,5 +3,16 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+Product.destroy_all
+
+product = Product.create([
+    { name: "Grapes",
+      price: 2,
+
+    },
+    {
+        body: "Freshly picked watermelon straight from the ground",
+        stock: 0,
+        price: 0.1e2,
+        image: "watermelon.png"
+    }])
