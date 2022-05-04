@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
         redirect_to listed_path
     else
         @product.save
+        session[:cart].append(@product)
         redirect_to listed_path
     end
     end
@@ -71,6 +72,7 @@ class ProductsController < ApplicationController
       if session[:cart].nil? 
         session[:cart] = [] 
     end
+    @cart = session[:cart]
   end
 end
 

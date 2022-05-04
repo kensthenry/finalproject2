@@ -11,7 +11,7 @@
           <%= link_to "Products", listed_path, class: "nav-link active" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Cart | #{@item_count}", cart_path, class: "nav-link active" %>
+          <%= link_to "Cart | #{@cart.length}", cart_path, class: "nav-link active" %>
         </li>
       </ul>
     </div>

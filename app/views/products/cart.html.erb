@@ -9,7 +9,7 @@
     <ul>
         <div class="col">
         <% @cart.each do |product| %>
-          <li><%= product %></li>
+          <li><%= product["title"] %>, <%= product["price"] %></li>
         <% end %>
       </div>
     </ul>
@@ -17,8 +17,7 @@
 
     <div class="row">
       <div class="col">
-        <%="Your total is: $#{sum} "%>
+        <h2> Checkout now and your products will arrive in not time! </h2>
         <button class="btn-dark btn-sm" type="button"> <%= link_to "checkout", checkout_path %></button>
       </div>
     </div>
-</div>
