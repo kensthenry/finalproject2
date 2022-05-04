@@ -26,6 +26,11 @@ class ProductsController < ApplicationController
     end
 
     def checkout
+        @cart.each do |product| 
+        @product = Product.find(product["id"])
+        @product.stock = @product.stock-1
+        @product.save
+      end
       session[:cart] = nil
       redirect_to listed_path
     end
@@ -35,7 +40,6 @@ class ProductsController < ApplicationController
     if @product.stock < 0
         redirect_to listed_path
     else
-        @product.save
         session[:cart].append(@product)
         redirect_to listed_path
     end
